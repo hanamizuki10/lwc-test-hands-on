@@ -1,0 +1,22 @@
+[
+  {
+    "fieldName": "Id",
+    "label": "ケース ID",
+    "type": "text"
+  },
+  {
+    "fieldName": "Status",
+    "label": "状況",
+    "type": "text"
+  },
+  {
+    "fieldName": "Priority",
+    "label": "優先度",
+    "type": "text"
+  },
+  {
+    "fieldName": "SuppliedEmail",
+    "label": "メールアドレス",
+    "type": "text"
+  }
+]

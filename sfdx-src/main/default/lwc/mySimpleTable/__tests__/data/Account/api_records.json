@@ -1,0 +1,74 @@
+[
+  {
+    "Id": "0011m00000X4zMYAAZ",
+    "Name": "テスト取引先A-1",
+    "Phone": "993-999-9999",
+    "NumberOfEmployees": 10,
+    "Rating": "Hot",
+    "Website": "https://xxxxxx.xxxxx.cmflow.example.com",
+    "Type": "Technology Partner"
+  },
+  {
+    "Id": "0011m00000XVVmrAAH",
+    "Name": "Sample Account for Entitlements",
+    "Phone": null,
+    "NumberOfEmployees": null,
+    "Rating": null,
+    "Website": null,
+    "Type": null
+  },
+  {
+    "Id": "0011m00000X4zMDAAZ",
+    "Name": "テスト取引先A",
+    "Phone": "999-9991-9999",
+    "NumberOfEmployees": 10000,
+    "Rating": "Warm",
+    "Website": null,
+    "Type": "Channel Partner / Reseller"
+  },
+  {
+    "Id": "0011m00000X4zMEAAZ",
+    "Name": "テスト取引先B",
+    "Phone": "999-9992-9999",
+    "NumberOfEmployees": 1000,
+    "Rating": "Hot",
+    "Website": "https://b.cmflow.example.com",
+    "Type": "Customer - Direct"
+  },
+  {
+    "Id": "0011m00000X4zMFAAZ",
+    "Name": "テスト取引先C",
+    "Phone": "999-9993-9999",
+    "NumberOfEmployees": 100,
+    "Rating": "Cold",
+    "Website": null,
+    "Type": "Installation Partner"
+  },
+  {
+    "Id": "0011m00000X4zMGAAZ",
+    "Name": "テスト取引先D",
+    "Phone": "999-9994-9999",
+    "NumberOfEmployees": 200,
+    "Rating": "Warm",
+    "Website": null,
+    "Type": "Customer - Channel"
+  },
+  {
+    "Id": "0011m00000X4zMHAAZ",
+    "Name": "テスト取引先E",
+    "Phone": "999-9995-9999",
+    "NumberOfEmployees": 255,
+    "Rating": "Cold",
+    "Website": null,
+    "Type": "Channel Partner / Reseller"
+  },
+  {
+    "Id": "0011m00000X4zMIAAZ",
+    "Name": "テスト取引先F",
+    "Phone": "999-9996-9999",
+    "NumberOfEmployees": 632,
+    "Rating": "Warm",
+    "Website": null,
+    "Type": "Channel Partner / Reseller"
+  }
+]

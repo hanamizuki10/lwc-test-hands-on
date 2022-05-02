@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>54.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>MySimpleTable</masterLabel>
+    <description>レコード一覧表示</description>
+    <targets>
+      <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+      <targetConfig targets="lightning__FlowScreen">
+        <propertyType name="T" extends="SObject" label="オブジェクト" />
+        <property label="オブジェクトAPI参照名" name="objectName" type="String" role="inputOnly" />
+        <property label="レコード一覧" name="records"  type="{T[]}" role="inputOnly" />
+        <property label="高さ(px)" name="height" type="Integer" role="inputOnly" />
+        <property label="選択されたレコード一覧" name="selectedRecords" type="{T[]}" role="outputOnly" />
+      </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

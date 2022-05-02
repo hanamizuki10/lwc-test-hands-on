@@ -1,0 +1,45 @@
+<template>
+  <template if:true={errorInfo}>
+    <div
+      class="slds-scoped-notification slds-media slds-media_center slds-theme_error"
+      role="status"
+    >
+      <div class="slds-media__figure">
+        <span class="slds-icon_container slds-icon-utility-error" title="error">
+          <lightning-icon
+            icon-name="utility:error"
+            title="Error"
+            size="x-small"
+            variant="inverse"
+          ></lightning-icon>
+        </span>
+      </div>
+      <div class="slds-media__body">
+        <p>【MySimpleTable Component Error】An error occurred when retrieving the data.</p>
+        <ul class="slds-p-left_medium slds-list_dotted">
+          <li>{errorInfo.message}</li>
+          <li if:true={errorInfo.method}>
+            error method: {errorInfo.method}
+            <span if:true={errorInfo.arguments}> ({errorInfo.arguments}) </span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </template>
+  <template if:false={errorInfo}>
+    <div if:true={isLoading} class="spinnerHolder">
+      <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </div>
+    <div if:true={hasRecords} style={style}>
+      <lightning-datatable
+              key-field="id"
+              data={records}
+              columns={columns}
+              onrowselection={handleSelectedRow}>
+      </lightning-datatable>
+    </div>
+    <template if:true={hasNoRecords}>
+      <div class="slds-m-around_x-small">データはありません。</div>
+    </template>
+  </template>
+</template>

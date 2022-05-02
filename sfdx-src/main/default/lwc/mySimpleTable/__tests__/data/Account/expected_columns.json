@@ -1,0 +1,32 @@
+[
+  {
+    "fieldName": "Name",
+    "label": "取引先名",
+    "type": "text"
+  },
+  {
+    "fieldName": "Phone",
+    "label": "取引先 電話",
+    "type": "text"
+  },
+  {
+    "fieldName": "NumberOfEmployees",
+    "label": "従業員数",
+    "type": "text"
+  },
+  {
+    "fieldName": "Rating",
+    "label": "取引先 評価",
+    "type": "text"
+  },
+  {
+    "fieldName": "Website",
+    "label": "Web サイト",
+    "type": "text"
+  },
+  {
+    "fieldName": "Type",
+    "label": "取引先 種別",
+    "type": "text"
+  }
+]
