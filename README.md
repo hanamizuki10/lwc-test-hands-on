@@ -1,18 +1,20 @@
-# Salesforce DX Project: Next Steps
+# LWCテストハンズオン用
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+当リポジトリはゆるっとSalesforceトーク #5 LWCテストハンズオンにて使用
 
-## How Do You Plan to Deploy Your Changes?
+https://co-meeting.connpass.com/event/246409/
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+関連資料：
+https://qiita.com/hanamizuki10/items/249973e41a1487a24894
 
-## Configure Your Salesforce DX Project
+## setup
+Node.js（v14 以上）、Salesforce CLI、JDK、VSCode、VS Code 向け Salesforce 拡張機能をインストールされている必要があります。
+### clone
+```
+git clone git@github.com:hanamizuki10/lwc-test-hands-on.git
+```
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+### sfdx-lwc-jest のインストール
+```
+sfdx force:lightning:lwc:test:setup
+```
