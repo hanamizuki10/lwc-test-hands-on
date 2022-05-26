@@ -12,33 +12,35 @@ export default class MySimpleTable extends LightningElement {
   wiredObjectInfo;
   errorInfo = null;
 
+  // データの有無返却
   get hasRecords() {
     return (this.records && this.records.length > 0);
   }
 
-  get hasNoRecords() {
-    return !this.hasRecords;
-  }
-
+  // 表形式の列名となる項目一覧を取得
   get displayFieldNames() {
     // 引き渡されたレコードに存在する項目を利用する
     return (this.hasRecords) ? Object.keys(this.records[0]) : [];
   }
 
+  // 表の高さCSSスタイルを返却
   get style() {
     if (!this.height || this.height === 0) return ''; // 最低限表示する
     return 'height: ' + this.height + 'px';
   }
 
-  get fieldInfos() {
-    return this.wiredObjectInfo?.data?.fields;
-  }
-
+  // サーバー問い合わせ中であるか返却
   get isLoading() {
     if (this.errorInfo) return false; //  エラー発生中ではない
     return !(this.wiredObjectInfo && this.wiredObjectInfo.data);
   }
 
+  // 項目情報を返却
+  get fieldInfos() {
+    return this.wiredObjectInfo?.data?.fields;
+  }
+
+  // wireサービスを利用して指定オブジェクトの定義情報を取得する
   @wire(getObjectInfo, { objectApiName: '$objectName' })
   wiredObjectInfoCallback(value) {
     this.wiredObjectInfo = value;
@@ -56,10 +58,18 @@ export default class MySimpleTable extends LightningElement {
     }
   }
 
+  // 表形式の列情報を初期化
   _initializationColumns() {
     this.columns = this.displayFieldNames
       .filter((apiName) => !['Id', 'Name'].includes(apiName))
-      .map((apiName) => this._generateColumn(apiName));
+      .map((apiName) => {
+        const column = {
+          fieldName: apiName,
+          label: this.fieldInfos[apiName].label,
+          type: 'text'
+        };
+        return column;
+      });
 
     if (this.displayFieldNames.includes('Name')) {
       // 先頭にNameを表示する
@@ -78,16 +88,7 @@ export default class MySimpleTable extends LightningElement {
     }
   }
 
-  _generateColumn(apiName) {
-    const column = {
-      fieldName: apiName,
-      label: this.fieldInfos[apiName].label,
-      type: 'text'
-    };
-    return column;
-  }
-
-
+  // 選択された行の情報をselectedRecordsにセット
   handleSelectedRow(event) {
     const selectedRows = event.detail.selectedRows;
     this.dispatchEvent(new FlowAttributeChangeEvent('selectedRecords', selectedRows));

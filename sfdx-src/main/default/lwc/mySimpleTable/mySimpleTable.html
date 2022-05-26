@@ -1,5 +1,27 @@
 <template>
+  <template if:false={errorInfo}>
+    <!-- LWC実行時にエラーが発生しない場合-->
+
+    <!-- サーバー問い合わせ時に表示する内容-->
+    <div if:true={isLoading} class="spinnerHolder">
+      <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
+    </div>
+    <!-- 表形式でデータ表示-->
+    <div if:true={hasRecords} style={style}>
+      <lightning-datatable
+              key-field="id"
+              data={records}
+              columns={columns}
+              onrowselection={handleSelectedRow}>
+      </lightning-datatable>
+    </div>
+    <!-- データが存在しない時の表示-->
+    <template if:false={hasRecords}>
+      <div class="slds-m-around_x-small">データはありません。</div>
+    </template>
+  </template>
   <template if:true={errorInfo}>
+    <!-- サーバー問い合わせ時にエラー発生した時に表示する内容-->
     <div
       class="slds-scoped-notification slds-media slds-media_center slds-theme_error"
       role="status"
@@ -25,21 +47,5 @@
         </ul>
       </div>
     </div>
-  </template>
-  <template if:false={errorInfo}>
-    <div if:true={isLoading} class="spinnerHolder">
-      <lightning-spinner alternative-text="Loading" size="small"></lightning-spinner>
-    </div>
-    <div if:true={hasRecords} style={style}>
-      <lightning-datatable
-              key-field="id"
-              data={records}
-              columns={columns}
-              onrowselection={handleSelectedRow}>
-      </lightning-datatable>
-    </div>
-    <template if:true={hasNoRecords}>
-      <div class="slds-m-around_x-small">データはありません。</div>
-    </template>
   </template>
 </template>

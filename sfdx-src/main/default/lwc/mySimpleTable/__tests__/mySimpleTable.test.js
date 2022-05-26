@@ -32,7 +32,7 @@ describe('c-my-simple-table', () => {
     }
   });
 
-  it('基本ケース', async () => {
+  it('テストケース1:正常系挙動', async () => {
     const element = createElement('c-my-simple-table', {
       is: MySimpleTable
     });
@@ -60,7 +60,7 @@ describe('c-my-simple-table', () => {
     expect(receivedColumns).toBe(expectedColumns);
   });
 
-  it('height未指定のケース', async () => {
+  it('テストケース2:height未指定', async () => {
     const element = createElement('c-my-simple-table', {
       is: MySimpleTable
     });
@@ -78,7 +78,7 @@ describe('c-my-simple-table', () => {
     expect(divEl.outerHTML).toBe('<div><lightning-datatable></lightning-datatable></div>');
   });
 
-  it('データなしのケース', async () => {
+  it('テストケース3:recordsのデータなし', async () => {
     const element = createElement('c-my-simple-table', {
       is: MySimpleTable
     });
@@ -96,31 +96,7 @@ describe('c-my-simple-table', () => {
     expect(divEl.outerHTML).toBe('<div class="slds-m-around_x-small">データはありません。</div>');
   });
 
-  it('Nameが存在せずIdのみのケース', async () => {
-    const element = createElement('c-my-simple-table', {
-      is: MySimpleTable
-    });
-    element.records = mockApiRecordsByCase;
-    element.height = '200';
-    element.objectName = 'Case';
-    document.body.appendChild(element);
-
-    // Emit data from @wire
-    await getObjectInfo.emit(mockGetObjectInfoByCase);
-
-    // アサーション
-    const dbEl = element.shadowRoot.querySelector('lightning-datatable');
-    const expectedData = JSON.stringify(mockApiRecordsByCase);
-    const receivedDate = JSON.stringify(dbEl.data);
-    const expectedColumns = JSON.stringify(mockExpectedColumnsByCase);
-    const receivedColumns = JSON.stringify(dbEl.columns);
-    expect(dbEl.keyField).toBe('id');
-    expect(receivedDate).toBe(expectedData);
-    expect(receivedColumns).toBe(expectedColumns);
-  });
-
-
-  it('ローディング中の表示確認', async () => {
+  it('テストケース4:ローディング中の表示確認', async () => {
     const element = createElement('c-my-simple-table', {
       is: MySimpleTable
     });
@@ -135,7 +111,7 @@ describe('c-my-simple-table', () => {
     expect(divEl.innerHTML).toBe('<lightning-spinner></lightning-spinner>');
   });
 
-  it('getObjectInfoでエラー発生ケース', async () => {
+  it('テストケース5:getObjectInfoでエラー発生ケース', async () => {
     const element = createElement('c-my-simple-table', {
       is: MySimpleTable
     });
@@ -165,5 +141,29 @@ describe('c-my-simple-table', () => {
     expect(errUiList.children[0].outerHTML).toBe('<li>403:INSUFFICIENT_ACCESS:このレコードへのアクセス権がありません。システム管理者にサポートを依頼するか、アクセス権を要求してください。</li>');
     // eslint-disable-next-line @lwc/lwc/no-inner-html
     expect(errUiList.children[1].outerHTML).toBe('<li>error method: getObjectInfo<span> (objectApiName=Account) </span></li>');
+  });
+
+
+  it('テストケース6:Nameが存在せずIdのみのケース', async () => {
+    const element = createElement('c-my-simple-table', {
+      is: MySimpleTable
+    });
+    element.records = mockApiRecordsByCase;
+    element.height = '200';
+    element.objectName = 'Case';
+    document.body.appendChild(element);
+
+    // Emit data from @wire
+    await getObjectInfo.emit(mockGetObjectInfoByCase);
+
+    // アサーション
+    const dbEl = element.shadowRoot.querySelector('lightning-datatable');
+    const expectedData = JSON.stringify(mockApiRecordsByCase);
+    const receivedDate = JSON.stringify(dbEl.data);
+    const expectedColumns = JSON.stringify(mockExpectedColumnsByCase);
+    const receivedColumns = JSON.stringify(dbEl.columns);
+    expect(dbEl.keyField).toBe('id');
+    expect(receivedDate).toBe(expectedData);
+    expect(receivedColumns).toBe(expectedColumns);
   });
 });
